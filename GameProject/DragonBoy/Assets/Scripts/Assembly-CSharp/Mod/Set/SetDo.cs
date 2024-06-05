@@ -772,7 +772,7 @@ namespace Mod.Set
         {
             try
             {
-                setDos = JsonConvert.DeserializeObject<List<SetDo>>(Utils.LoadDataString($"setdo_{Utils.username}_{Utils.server["ip"]}_{Utils.server["port"]}"));
+                setDos = JsonConvert.DeserializeObject<List<SetDo>>(Data.LoadDataString($"setdo_{Utils.username}_{Utils.server["ip"]}_{Utils.server["port"]}"));
             }
             catch { }
         }
@@ -781,7 +781,7 @@ namespace Mod.Set
         {
             try
             {
-                Utils.SaveData($"setdo_{Utils.username}_{Utils.server["ip"]}_{Utils.server["port"]}", JsonConvert.SerializeObject(setDos));
+                Data.SaveData($"setdo_{Utils.username}_{Utils.server["ip"]}_{Utils.server["port"]}", JsonConvert.SerializeObject(setDos));
             }
             catch { }
         }

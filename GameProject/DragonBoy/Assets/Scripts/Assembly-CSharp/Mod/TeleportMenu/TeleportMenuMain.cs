@@ -156,7 +156,7 @@ namespace Mod.TeleportMenu
             {
                 if (isDataLoaded)
                     return;
-                foreach (string str in Utils.LoadDataString($"teleport_list_{GameMidlet.IP}_{GameMidlet.PORT}").Split('|'))
+                foreach (string str in Data.LoadDataString($"teleport_list_{GameMidlet.IP}_{GameMidlet.PORT}").Split('|'))
                 {
                     try
                     {
@@ -181,7 +181,7 @@ namespace Mod.TeleportMenu
             string data = "";
             foreach (TeleportChar teleportChar in listTeleportChars)
                 data += teleportChar.Name + "," + teleportChar.ID + "," + teleportChar.LastTimeTeleportTo + "|";
-            Utils.SaveData($"teleport_list_{GameMidlet.IP}_{GameMidlet.PORT}", data);
+            Data.SaveData($"teleport_list_{GameMidlet.IP}_{GameMidlet.PORT}", data);
         }
 
         static void ShowListChars(TeleportStatus status)

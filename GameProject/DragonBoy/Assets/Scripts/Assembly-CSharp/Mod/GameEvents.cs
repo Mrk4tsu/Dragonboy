@@ -17,6 +17,7 @@ using Mod.Set;
 using Mod.TeleportMenu;
 using Mod.Xmap;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Mod
 {
@@ -385,7 +386,7 @@ namespace Mod
             }
             if (mSystem.currentTimeMillis() - lastTimeRequestZoneInfo > delayRequestZoneInfo)
             {
-                delayRequestZoneInfo = Res.random(75, 125);
+                delayRequestZoneInfo = Res.random(200, 325);
                 lastTimeRequestZoneInfo = mSystem.currentTimeMillis();
                 Service.gI().openUIZone();
             }
@@ -587,6 +588,7 @@ namespace Mod
         {
             ModMenuMain.Paint(g);
             CharEffectMain.Paint(g);
+            DropDownList._Instance().paint_Area(g, GameCanvas.hw - GameCanvas.serverScr.wBox / 2, GameCanvas.serverScr.yBox + 100);
             //UIReportersManager.handlePaintGameScr(g);
         }
 

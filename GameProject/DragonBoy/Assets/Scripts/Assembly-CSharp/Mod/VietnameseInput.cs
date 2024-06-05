@@ -66,22 +66,22 @@ namespace Mod
 
         internal static void LoadData()
         {
-            if (Utils.TryLoadDataBool("vn_input_enabled", out bool value))
+            if (Data.TryLoadDataBool("vn_input_enabled", out bool value))
                 VietKeyHandler.VietModeEnabled = value;
-            if (Utils.TryLoadDataInt("vn_input_input_method", out int value2))
+            if (Data.TryLoadDataInt("vn_input_input_method", out int value2))
                 VietKeyHandler.InputMethod = (InputMethods)value2;
-            if (Utils.TryLoadDataBool("vn_input_diacritics", out bool value3))
+            if (Data.TryLoadDataBool("vn_input_diacritics", out bool value3))
                 VietKeyHandler.DiacriticsPosClassic = value3;
-            if (Utils.TryLoadDataBool("vn_input_consume_repeat_key", out bool value4))
+            if (Data.TryLoadDataBool("vn_input_consume_repeat_key", out bool value4))
                 VietKeyHandler.ConsumeRepeatKey = value4;
         }
 
         internal static void SaveData()
         {
-            Utils.SaveData("vn_input_enabled", VietKeyHandler.VietModeEnabled);
-            Utils.SaveData("vn_input_input_method", (int)VietKeyHandler.InputMethod);
-            Utils.SaveData("vn_input_diacritics", VietKeyHandler.DiacriticsPosClassic);
-            Utils.SaveData("vn_input_consume_repeat_key", VietKeyHandler.ConsumeRepeatKey);
+            Data.SaveData("vn_input_enabled", VietKeyHandler.VietModeEnabled);
+            Data.SaveData("vn_input_input_method", (int)VietKeyHandler.InputMethod);
+            Data.SaveData("vn_input_diacritics", VietKeyHandler.DiacriticsPosClassic);
+            Data.SaveData("vn_input_consume_repeat_key", VietKeyHandler.ConsumeRepeatKey);
         }
 
         internal static bool ToVietnamese(string str, out string result, ref int caretPos, int inputType)

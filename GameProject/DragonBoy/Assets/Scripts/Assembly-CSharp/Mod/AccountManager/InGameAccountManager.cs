@@ -470,16 +470,16 @@ namespace Mod.AccountManager
 
         static void LoadDataAccounts()
         {
-            if (Utils.TryLoadDataString("account_manager_accounts", out string jsonData))
+            if (Data.TryLoadDataString("account_manager_accounts", out string jsonData))
                 accounts = JsonConvert.DeserializeObject<List<Account>>(jsonData) ?? new List<Account>();
-            if (Utils.TryLoadDataInt("account_manager_selected_account_index", out int value))
+            if (Data.TryLoadDataInt("account_manager_selected_account_index", out int value))
                 selectedAccountIndex = value;
         }
 
         static void SaveDataAccounts()
         {
-            Utils.SaveData("account_manager_accounts", JsonConvert.SerializeObject(accounts));
-            Utils.SaveData("account_manager_selected_account_index", selectedAccountIndex);
+            Data.SaveData("account_manager_accounts", JsonConvert.SerializeObject(accounts));
+            Data.SaveData("account_manager_selected_account_index", selectedAccountIndex);
         }
 
         static void PaintListAccounts(mGraphics g)

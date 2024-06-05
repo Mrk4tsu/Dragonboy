@@ -320,7 +320,7 @@ namespace Mod.Background
         {
             try
             {
-                if (Utils.TryLoadDataString("custom_bg_override_scale_modes", out string str))
+                if (Data.TryLoadDataString("custom_bg_override_scale_modes", out string str))
                 {
                     foreach (string item in str.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries))
                     {
@@ -328,19 +328,19 @@ namespace Mod.Background
                         overrideScaleMode.Add(data[0], Enum.Parse<ScaleMode>(data[1]));
                     }
                 }
-                foreach (string path in Utils.LoadDataString("custom_bg_paths").Split('|'))
+                foreach (string path in Data.LoadDataString("custom_bg_paths").Split('|'))
                 {
                     if (!string.IsNullOrEmpty(path))
                         customBgs.Add(path, null);
                 }
                 isAllBgsLoaded = false;
-                Utils.TryLoadDataBool("custom_bg_change", out isChangeBg);
-                Utils.TryLoadDataInt("custom_bg_index", out bgIndex);
-                if (Utils.TryLoadDataInt("custom_bg_default_scale_mode", out int value))
+                Data.TryLoadDataBool("custom_bg_change", out isChangeBg);
+                Data.TryLoadDataInt("custom_bg_index", out bgIndex);
+                if (Data.TryLoadDataInt("custom_bg_default_scale_mode", out int value))
                     DefaultScaleMode = (ScaleMode)value;
                 if (bgIndex >= customBgs.Count)
                     bgIndex = 0;
-                if (Utils.TryLoadDataFloat("custom_bg_gif_speed", out float value2))
+                if (Data.TryLoadDataFloat("custom_bg_gif_speed", out float value2))
                     speed = Mathf.Clamp(value2, 0, 100);
             }
             catch (Exception)
@@ -350,12 +350,12 @@ namespace Mod.Background
         internal static void SaveData()
         {
             string data = string.Join("|", customBgs.Keys.ToArray());
-            Utils.SaveData("custom_bg_paths", data);
-            Utils.SaveData("custom_bg_change", isChangeBg);
-            Utils.SaveData("custom_bg_index", bgIndex);
-            Utils.SaveData("custom_bg_gif_speed", speed);
-            Utils.SaveData("custom_bg_default_scale_mode", (int)DefaultScaleMode);
-            Utils.SaveData("custom_bg_override_scale_modes", string.Join(Environment.NewLine, overrideScaleMode.Select(kVP => kVP.Key + '|' + kVP.Value)));
+            Data.SaveData("custom_bg_paths", data);
+            Data.SaveData("custom_bg_change", isChangeBg);
+            Data.SaveData("custom_bg_index", bgIndex);
+            Data.SaveData("custom_bg_gif_speed", speed);
+            Data.SaveData("custom_bg_default_scale_mode", (int)DefaultScaleMode);
+            Data.SaveData("custom_bg_override_scale_modes", string.Join(Environment.NewLine, overrideScaleMode.Select(kVP => kVP.Key + '|' + kVP.Value)));
         }
 
         internal static void SetState(bool value)

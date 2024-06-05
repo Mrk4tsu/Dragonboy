@@ -33,7 +33,7 @@ namespace Mod
                         else
                         {
                             volume = result / 100f;
-                            Utils.SaveData("intro_volume", volume);
+                            Data.SaveData("intro_volume", volume);
                             GameScr.info1.addInfo(string.Format(Strings.valueChanged, Strings.setIntroVolumeTitle, result) + '!', 0);
                         }
                     }
@@ -57,9 +57,9 @@ namespace Mod
         {
             GameEvents.OnAwake();
             videoPlayer = GameObject.Find("Main Camera").GetComponent<VideoPlayer>();
-            Utils.TryLoadDataBool("intro_enabled", out isEnabled);
-            Utils.TryLoadDataString("intro_path", out path);
-            if (Utils.TryLoadDataInt("intro_volume", out int vol))
+            Data.TryLoadDataBool("intro_enabled", out isEnabled);
+            Data.TryLoadDataString("intro_path", out path);
+            if (Data.TryLoadDataInt("intro_volume", out int vol))
                 volume = vol / 100f;
         }
 
@@ -141,7 +141,7 @@ namespace Mod
                 if (paths.Length == 0)
                     return;
                 path = paths[0];
-                Utils.SaveData("intro_path", path);
+                Data.SaveData("intro_path", path);
             })
             { IsBackground = true }.Start();
         }

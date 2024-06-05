@@ -748,22 +748,22 @@ namespace Mod.ModMenu
         {
             foreach (ModMenuItemBoolean modMenuItem in modMenuItemBools) 
                 if (!string.IsNullOrEmpty(modMenuItem.RMSName))
-                    Utils.SaveData(modMenuItem.RMSName, modMenuItem.Value);
+                    Data.SaveData(modMenuItem.RMSName, modMenuItem.Value);
             foreach (ModMenuItemValues modMenuItem in modMenuItemValues)
                 if (!string.IsNullOrEmpty(modMenuItem.RMSName))
-                    Utils.SaveData(modMenuItem.RMSName, modMenuItem.SelectedValue);
+                    Data.SaveData(modMenuItem.RMSName, modMenuItem.SelectedValue);
         }
 
         internal static void LoadData()
         {
             foreach (ModMenuItemBoolean modMenuItem in modMenuItemBools)
             {
-                if (!string.IsNullOrEmpty(modMenuItem.RMSName) && Utils.TryLoadDataBool(modMenuItem.RMSName, out bool value))
+                if (!string.IsNullOrEmpty(modMenuItem.RMSName) && Data.TryLoadDataBool(modMenuItem.RMSName, out bool value))
                     modMenuItem.Value = value;
             }
             foreach (ModMenuItemValues modMenuItem in modMenuItemValues)
             {
-                if (!string.IsNullOrEmpty(modMenuItem.RMSName) && Utils.TryLoadDataInt(modMenuItem.RMSName, out int data))
+                if (!string.IsNullOrEmpty(modMenuItem.RMSName) && Data.TryLoadDataInt(modMenuItem.RMSName, out int data))
                     modMenuItem.SelectedValue = data;
             }
         }

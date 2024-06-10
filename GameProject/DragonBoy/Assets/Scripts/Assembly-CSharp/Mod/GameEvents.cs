@@ -611,6 +611,7 @@ namespace Mod
         internal static bool OnUpdateTouchGameScr(GameScr instance)
         {
             ModMenuMain.UpdateTouch();
+            NewUI.Instance.updateKeyPopup(50, 50);
             if (GameCanvas.isTouchControl)
             {
                 if (!TileMap.isOfflineMap())

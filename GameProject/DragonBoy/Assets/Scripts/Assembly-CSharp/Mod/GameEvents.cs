@@ -359,7 +359,7 @@ namespace Mod
 
                     account.Info.Name = Char.myCharz().cName;
                     account.Info.CharID = Char.myCharz().charID;
-                    account.Info.Gender = (sbyte)Char.myCharz().cgender;   
+                    account.Info.Gender = (sbyte)Char.myCharz().cgender;
                     account.Info.EXP = Char.myCharz().cPower;
                     account.Info.MaxHP = Char.myCharz().cHPFull;
                     account.Info.MaxMP = Char.myCharz().cMPFull;
@@ -588,7 +588,7 @@ namespace Mod
         {
             ModMenuMain.Paint(g);
             CharEffectMain.Paint(g);
-            DropDownList._Instance().paint_Area(g, GameCanvas.hw - GameCanvas.serverScr.wBox / 2, GameCanvas.serverScr.yBox + 100);
+            NewUI.Instance.paintPopup(g, 50, 50);
             //UIReportersManager.handlePaintGameScr(g);
         }
 

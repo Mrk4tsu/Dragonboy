@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Mod.ModHelper;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
@@ -156,6 +158,34 @@ namespace Mod
             fileStream.Write(BitConverter.GetBytes(value), 0, 4);
             fileStream.Flush();
             fileStream.Close();
+        }
+
+        //Bổ sung 2 hàm này
+        internal static void SaveData(string name, List<string> data, bool isCommon = true)
+        {
+            string path = dataPath;
+            if (!isCommon)
+                path = Path.Combine(Rms.GetiPhoneDocumentsPath(), "ModData");
+            if(!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+            FileStream fileStream = new FileStream(Path.Combine(path, name), FileMode.Create);
+            string jsonData = JsonUtility.ToJson(new Serialization<string>(data));
+            byte[] buffer = Encoding.UTF8.GetBytes(jsonData);
+            fileStream.Write(buffer, 0, buffer.Length);
+            fileStream.Flush();
+            fileStream.Close();
+        }
+        internal static bool TryLoadDataListString(string name, out List<string> value, bool isCommon = true)
+        {
+            value = default;
+            try
+            {
+                string jsonData = LoadDataString(name, isCommon);
+                value = JsonUtility.FromJson<Serialization<string>>(jsonData).ToList();
+                return true;
+            }
+            catch (Exception ex) { Debug.LogException(ex); }
+            return false;
         }
     }
 }
